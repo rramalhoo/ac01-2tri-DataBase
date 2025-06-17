@@ -11,6 +11,9 @@ create table destinos (
 	avaliacao float
 )
 
+insert into destinos (id_destino, nomeDestino, nomePais, atracoes, custoDiario, avaliacao)
+values (1, 'Paris', 'Fran莽a', 'Torre Eiffel, Museu do Louvre', 150.00, 4.8)
+
 
 create table pacotes (
 	id_pacote int primary key,
@@ -20,6 +23,9 @@ create table pacotes (
 	servicosPacote varchar(100)
 )
 
+insert into pacotes (id_pacote, nomePacote, diasPacote, precoPacote, servicosPacote)
+values (1, 'Aventura na Amaz么nia', 7, 1200, 'Transporte, Hospedagem, Guias')
+
 
 create table avaliacoes (
 	id_avaliacao int primary key,
@@ -28,6 +34,9 @@ create table avaliacoes (
 	comentario varchar(50)
 )
 
+insert into avaliacoes (id_avaliacao, destino, avaliacao, comentario)
+values (1, 'T贸quio', 5, 'Incr铆vel experi锚ncia cultural!')
+
 
 create table clientes (
 	id_cliente int primary key,
@@ -35,6 +44,9 @@ create table clientes (
 	emailCliente varchar(250),
 	destinoInteresse varchar(200)
 )
+
+insert into clientes (id_cliente, nomeCliente, emailCliente, destinoInteresse)
+values (1, 'Jo茫o Silva', 'joao.silva@example.com', 'Nova York e Londres')
 
 
 create table reservas (
@@ -45,36 +57,10 @@ create table reservas (
 	dataRetorno date
 )
 
-
-insert into destinos (id_destino, nomeDestino, nomePais, atracoes, custoDiario, avaliacao)
-values (1, 'Paris', 'Fran鏰', 'Torre Eiffel, Museu do Louvre', 150.00, 4.8)
-
-select * from destinos
-
-
-insert into pacotes (id_pacote, nomePacote, diasPacote, precoPacote, servicosPacote)
-values (1, 'Aventura na Amaz鬾ia', 7, 1200, 'Transporte, Hospedagem, Guias')
-
-select * from pacotes
-
-
-insert into avaliacoes (id_avaliacao, destino, avaliacao, comentario)
-values (1, 'T髊uio', 5, 'Incr韛el experi阯cia cultural!')
-
-select * from avaliacoes
-
-
-insert into clientes (id_cliente, nomeCliente, emailCliente, destinoInteresse)
-values (1, 'Jo鉶 Silva', 'joao.silva@example.com', 'Nova York e Londres')
-
-select * from clientes
-
-
 insert into reservas (id_reserva, nomeReserva, destinoReserva, dataPartida, dataRetorno)
 values (1, 'Maria Santos', 'Bali', '2024-07-15', '2025-07-25')
 
 select * from reservas
-
 
 update destinos 
 set custoDiario = custoDiario * 1.10 
@@ -115,21 +101,21 @@ set statusReserva = 'Confirmada'
 where id_reserva = 1
 
 update clientes
-set destinoInteresse = 'Nova York, Londres e T髊uio'
+set destinoInteresse = 'Nova York, Londres e T贸quio'
 where id_cliente = 1
 
 update pacotes
-set nomePacote = 'Aventura na Floresta Amaz鬾ica'
+set nomePacote = 'Aventura na Floresta Amaz么nica'
 where id_pacote = 1
 
 delete from destinos 
 where nomeDestino = 'Paris'
 
 insert into avaliacoes (id_avaliacao, destino, avaliacao, comentario)
-values (2, 'T髊uio', 3, 'N鉶 gostei.')
+values (2, 'T贸quio', 3, 'N茫o gostei.')
 
 delete from avaliacoes 
-where destino = 'T髊uio' and avaliacao = 3
+where destino = 'T贸quio' and avaliacao = 3
 
 update reservas
 set statusReserva = 'Cancelada'
@@ -139,16 +125,15 @@ delete from reservas
 where id_reserva = 1 and statusReserva = 'Cancelada'
 
 insert into destinos (id_destino, nomeDestino, nomePais, atracoes, custoDiario, avaliacao)
-values (2, 'Paris', 'Fran鏰', 'Torre Eiffel, Museu do Louvre', 150.00, 4.8)
+values (2, 'Paris', 'Fran莽a', 'Torre Eiffel, Museu do Louvre', 150.00, 4.8)
 
 update destinos
 set atracoes = 'Museu do Louvre'
 where id_destino = 2
 
 delete from clientes 
-where nomeCliente = 'Jo鉶 Silva'
+where nomeCliente = 'Jo茫o Silva'
 
-select * from pacotes
 
 select * from reservas
 
